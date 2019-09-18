@@ -31,7 +31,7 @@ const CreateTitle = styled.h3`
 
 const CreateInput = styled.input`
   width: 400px;
-  height: 80px;
+  height: 60px;
   font-size: 22px;
   padding: 10px;
   box-sizing: border-box;
@@ -40,6 +40,7 @@ const CreateInput = styled.input`
   outline-color: blue;
   box-shadow: 0 2px 4px grey;
   align-self: center;
+  margin-bottom: 30%;
 `;
 
 const Home = ({ boards, boardOrder, dispatch }) => {
@@ -56,10 +57,25 @@ const Home = ({ boards, boardOrder, dispatch }) => {
     dispatch(addBoard(newBoardTitle));
   };
 
+  
+  const renderCreateBoard = () => {
+    return (
+      <form onSubmit={handleSubmit} style={{ textAlign: "center" }}>
+        <CreateTitle>Create a new Board</CreateTitle>
+        <CreateInput
+          onChange={handleChange}
+          value={newBoardTitle}
+          placeholder="Your boards title..."
+          type="text"
+          />
+      </form>
+    );
+  };
+  
   const renderBoards = () => {
     return boardOrder.map(boardID => {
       const board = boards[boardID];
-
+  
       return (
         <Link
           key={boardID}
@@ -71,25 +87,11 @@ const Home = ({ boards, boardOrder, dispatch }) => {
       );
     });
   };
-
-  const renderCreateBoard = () => {
-    return (
-      <form onSubmit={handleSubmit} style={{ textAlign: "center" }}>
-        <CreateTitle>Create a new Board</CreateTitle>
-        <CreateInput
-          onChange={handleChange}
-          value={newBoardTitle}
-          placeholder="Your boards title..."
-          type="text"
-        />
-      </form>
-    );
-  };
-
+  
   return (
     <HomeContainer>
-      <Thumbnails>{renderBoards()}</Thumbnails>
       {renderCreateBoard()}
+      <Thumbnails>{renderBoards()}</Thumbnails>
     </HomeContainer>
   );
 };

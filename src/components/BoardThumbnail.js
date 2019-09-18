@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Thumbnail = styled.div`
-  height: 280px;
-  width: 280px;
+  height: 200px;
+  width: 200px;
   background: #d9eeec;
   padding: 10px;
   margin: 8px;

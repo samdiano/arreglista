@@ -52,7 +52,7 @@ class TrelloBoard extends PureComponent {
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Link to="/">Go Back</Link>
+        <Link style={{height: 400, textDecoration: 'none'}} to="/"> <span>️️⬅️</span></Link>
         <h2>{board.title}</h2>
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
           {provided => (
